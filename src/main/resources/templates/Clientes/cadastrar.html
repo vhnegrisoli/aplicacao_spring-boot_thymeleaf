@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cadastro de cliente</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--
+    =========================================== Barra de Menu ==========================================
+  -->
+
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">CRUD Spring Boot</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Clientes <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/clientes/cadastrar}">Cadastrar cliente</a></li>
+              <li><a th:href="@{/clientes/listar}">Listar clientes</a></li>
+            </ul>
+          </li>
+          <li><a href="">Sair</a></li>
+        </ul>
+  
+      </div>
+    </nav>
+  
+    <!--
+        =========================================== Fim barra de Menu ==========================================
+      -->
+  <div class="container">
+    <h2>Cadastrar cliente</h2>
+    <form th:action="${cliente.id == null} ? @{/clientes/salvar} : @{/clientes/editar}" th:object = "${cliente}" method = "POST">
+      <div class="form-group">
+        <label for="name">Nome do cliente:</label>
+        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do vendedor..." name="nome">
+      </div>
+      <div class="form-group">
+          <label for="name">E-mail do cliente:</label>
+          <input type="email" class="form-control" id="email" th:field = "*{email}" placeholder="Digite o nome do vendedor..." name="nome">
+        </div>
+        <div class="form-group">
+            <label for="name">Endereço do cliente:</label>
+            <input type="text" class="form-control" th:field = "*{endereco}" id="email" placeholder="Digite o nome do vendedor..." name="nome">
+          </div>
+      <input type="hidden" id="id" th:field="*{id}"/>
+      <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>
+    </form>
+  </div>
+</body>
+</html>
