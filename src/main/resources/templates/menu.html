@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!--
+    =========================================== Barra de Menu ==========================================
+  -->
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">CRUD Spring Boot</a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">Menu</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Clientes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/clientes/cadastrar}">Cadastrar cliente</a></li>
+                        <li><a th:href="@{/clientes/listar}">Listar clientes</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Pedidos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/pedidos/cadastrar}">Cadastrar pedido</a></li>
+                        <li><a th:href="@{/pedidos/listar}">Listar pedidos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Produtos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/produtos/cadastrar}">Cadastrar produto</a></li>
+                        <li><a th:href="@{/produtos/listar}">Listar produtos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Atendentes <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/atendentes/cadastrar}">Cadastrar atendente</a></li>
+                        <li><a th:href="@{/atendentes/listar}">Listar atendentes</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Categorias <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/categorias/cadastrar}">Cadastrar categoria</a></li>
+                        <li><a th:href="@{/categorias/listar}">Listar categorias</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Sair</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!--
+        =========================================== Fim barra de Menu ==========================================
+      -->
+
+</body>
+
+</html>

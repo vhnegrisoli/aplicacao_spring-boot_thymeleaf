@@ -61,20 +61,12 @@
         =========================================== Fim barra de Menu ==========================================
       -->
   <div class="container">
-    <h2>Cadastrar cliente</h2>
-    <form th:action="${cliente.id == null} ? @{/clientes/salvar} : @{/clientes/editar}" th:object = "${cliente}" method = "POST">
+    <h2>Cadastrar categoria</h2>
+    <form th:action="${categoria.id == null} ? @{/categorias/salvar} : @{/categorias/editar}" th:object = "${categoria}" method = "POST">
       <div class="form-group">
-        <label for="name">Nome do cliente:</label>
-        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do vendedor..." name="nome">
+        <label for="name">Nome da categoria:</label>
+        <input type="text" class="form-control" id="email"  th:field = "*{descricao}" placeholder="Digite o nome do vendedor..." name="descricao">
       </div>
-      <div class="form-group">
-          <label for="name">E-mail do cliente:</label>
-          <input type="email" class="form-control" id="email" th:field = "*{email}" placeholder="Digite o nome do vendedor..." name="nome">
-        </div>
-        <div class="form-group">
-            <label for="name">Endereço do cliente:</label>
-            <input type="text" class="form-control" th:field = "*{endereco}" id="email" placeholder="Digite o nome do vendedor..." name="nome">
-          </div>
       <input type="hidden" id="id" th:field="*{id}"/>
       <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>
     </form>

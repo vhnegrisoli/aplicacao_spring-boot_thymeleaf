@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Listar clientes</title>
+<title>Listar atendentes</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -69,32 +69,28 @@
     -->
 
 	<div class="container">
-		<h2>Listar Clientes</h2>
+		<h2>Listar Atendentes</h2>
 
 		<table class="table table-condensed">
 			<thead>
 				<tr>
-					<th>Código do Cliente</th>
-					<th>Nome do Cliente</th>
-					<th>E-mail do Cliente</th>
-					<th>Endereço do Cliente</th>
+					<th>Código da Categoria</th>
+					<th>Nome do Categoria</th>
 					<th>Alterar</th>
 					<th>Remover</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="c : ${clientes}">
-					<td th:text="${c.id}">Exibir código do cliente</td>
-					<td th:text="${c.nome}">Exibir nome do cliente</td>
-					<td th:text="${c.email}">Exibir email do cliente</td>
-					<td th:text="${c.endereco}">Exibir endereco do cliente</td>
+				<tr th:each="c : ${categorias}">
+					<td th:text="${c.id}"></td>
+					<td th:text="${c.descricao}"></td>
 					<td><a class="btn btn-info btn-sm"
-						th:href="@{/clientes/editar/{id} (id=${c.id}) }" role="button">
+						th:href="@{/categorias/editar/{id} (id=${c.id}) }" role="button">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 					</td>
 					<td><a class="btn btn-danger btn-sm"
-						th:href="@{/clientes/remover/{id} (id=${c.id}) }" role="button">
+						th:href="@{/categorias/remover/{id} (id=${c.id}) }" role="button">
 							<span class="glyphicon glyphicon-remove"></span>
 						</a>
 					</td>
@@ -103,7 +99,7 @@
 		</table>
 	</div>
 	<div class="container">
-		<a th:href="@{/clientes/cadastrar}"><button type="submit"
+		<a th:href="@{/categorias/cadastrar}"><button type="submit"
 				class="btn btn-default">
 				<span class="glyphicon glyphicon-arrow-left"></span> Voltar
 			</button>

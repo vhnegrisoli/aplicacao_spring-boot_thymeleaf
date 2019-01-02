@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cadastro de cliente</title>
+  <title>Cadastro de atendentes</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -61,20 +61,12 @@
         =========================================== Fim barra de Menu ==========================================
       -->
   <div class="container">
-    <h2>Cadastrar cliente</h2>
-    <form th:action="${cliente.id == null} ? @{/clientes/salvar} : @{/clientes/editar}" th:object = "${cliente}" method = "POST">
+    <h2>Cadastrar atendente</h2>
+    <form th:action="${atendente.id == null} ? @{/atendentes/salvar} : @{/atendentes/editar}" th:object = "${atendente}" method = "POST">
       <div class="form-group">
-        <label for="name">Nome do cliente:</label>
-        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do vendedor..." name="nome">
+        <label for="name">Nome da atendente:</label>
+        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do/a atendente..." name="nome">
       </div>
-      <div class="form-group">
-          <label for="name">E-mail do cliente:</label>
-          <input type="email" class="form-control" id="email" th:field = "*{email}" placeholder="Digite o nome do vendedor..." name="nome">
-        </div>
-        <div class="form-group">
-            <label for="name">Endereço do cliente:</label>
-            <input type="text" class="form-control" th:field = "*{endereco}" id="email" placeholder="Digite o nome do vendedor..." name="nome">
-          </div>
       <input type="hidden" id="id" th:field="*{id}"/>
       <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>
     </form>
