@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cadastro de pedido</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--
+    =========================================== Barra de Menu ==========================================
+  -->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">CRUD Spring Boot</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Menu</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Clientes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/clientes/cadastrar}">Cadastrar cliente</a></li>
+                    <li><a th:href="@{/clientes/listar}">Listar clientes</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Pedidos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/pedidos/cadastrar}">Cadastrar pedido</a></li>
+                    <li><a th:href="@{/pedidos/listar}">Listar pedidos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Produtos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/produtos/cadastrar}">Cadastrar produto</a></li>
+                    <li><a th:href="@{/produtos/listar}">Listar produtos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Atendentes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/atendentes/cadastrar}">Cadastrar atendente</a></li>
+                    <li><a th:href="@{/atendentes/listar}">Listar atendentes</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Categorias <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/produtos/cadastrar}">Cadastrar produto</a></li>
+                    <li><a th:href="@{/produtos/listar}">Listar produtos</a></li>
+                </ul>
+            </li>
+            <li><a href="">Sair</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--
+    =========================================== Fim barra de Menu ==========================================
+  -->
+<div class="container">
+    <h2>Cadastrar pedido</h2>
+    <form th:action="${pedido.id == null} ? @{/pedidos/salvar} : @{/pedidos/editar}" th:object = "${pedido}" method = "POST">
+
+        <div class="form-group">
+            <label for="produto">Produto do pedido:</label>
+			<p></p>
+            <select class="form-control"  id="produto" produto th:field = "*{produto}" text="Selecione uma opção">
+                <option value="">Selecione uma opção</option>
+                <option th:each="p : ${produtos}"
+                        th:value="${p.id}" th:text="${p.descricao}" selected="selected">
+                </option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label for="cliente">Cliente do pedido:</label>
+			<p></p>
+            <select class="form-control"  id="cliente" cliente th:field = "*{cliente}" text="Selecione uma opção">
+                <option value="">Selecione uma opção</option>
+                <option th:each="c : ${clientes}"
+                        th:value="${c.id}" th:text="${c.nome}" selected="selected">
+                </option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label for="atendente">Atendente do pedido:</label>
+			<p></p>
+            <select class="form-control"  id="atendente" atendente th:field = "*{atendente}" text="Selecione uma opção">
+                <option value="">Selecione uma opção</option>
+                <option th:each="a : ${atendentes}"
+                        th:value="${a.id}" th:text="${a.nome}" selected="selected">
+                </option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Data do Pedido:</label>
+            <input type="text" class="form-control" id="email"  th:field = "*{data_pedido}" placeholder="Data do pedido..." name="descricao">
+        </div>
+
+        <div class="form-group">
+            <label>Quantidade de Produtos:</label>
+            <input type="text" class="form-control" id="email"  th:field = "*{quantidade}" placeholder="Digite a quantidade de produtos..." name="descricao">
+        </div>
+
+        <input type="hidden" id="id" th:field="*{id}"/>
+        <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>
+    </form>
+</div>
+</body>
+</html>
