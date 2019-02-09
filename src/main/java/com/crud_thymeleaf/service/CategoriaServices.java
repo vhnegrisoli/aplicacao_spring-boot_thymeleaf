@@ -1,7 +1,7 @@
-package com.crud_thymeleaf.services;
+package com.crud_thymeleaf.service;
 
-import com.crud_thymeleaf.domain.Categoria;
-import com.crud_thymeleaf.repositories.CategoriaRepository;
+import com.crud_thymeleaf.model.Categoria;
+import com.crud_thymeleaf.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +35,4 @@ public class CategoriaServices {
     public void removeCategoria(Categoria categoria) {
         categoriaRepository.delete(categoria);
     }
-
-
 }

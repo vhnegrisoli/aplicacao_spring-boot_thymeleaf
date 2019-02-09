@@ -1,7 +1,7 @@
-package com.crud_thymeleaf.services;
+package com.crud_thymeleaf.service;
 
-import com.crud_thymeleaf.domain.Pedido;
-import com.crud_thymeleaf.repositories.PedidoRepository;
+import com.crud_thymeleaf.model.Pedido;
+import com.crud_thymeleaf.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

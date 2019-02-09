@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Página inicial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        div.solid {
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--
+  =========================================== Barra de Menu ==========================================
+-->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Sistema de Pedidos</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Menu</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown"><a class="dropdown-toggle"
+                                    data-toggle="dropdown" href="">Clientes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/clientes/cadastrar}">Cadastrar cliente</a></li>
+                    <li><a th:href="@{/clientes/listar}">Listar clientes</a></li>
+                </ul></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+                                    data-toggle="dropdown" href="">Pedidos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/pedidos/cadastrar}">Cadastrar pedido</a></li>
+                    <li><a th:href="@{/pedidos/listar}">Listar pedidos</a></li>
+                </ul></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+                                    data-toggle="dropdown" href="">Produtos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/produtos/cadastrar}">Cadastrar produto</a></li>
+                    <li><a th:href="@{/produtos/listar}">Listar produtos</a></li>
+                </ul></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+                                    data-toggle="dropdown" href="">Atendentes <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/atendentes/cadastrar}">Cadastrar
+                        atendente</a></li>
+                    <li><a th:href="@{/atendentes/listar}">Listar atendentes</a></li>
+                </ul></li>
+            <li class="dropdown"><a class="dropdown-toggle"
+                                    data-toggle="dropdown" href="">Categorias <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/categorias/cadastrar}">Cadastrar
+                        categoria</a></li>
+                    <li><a th:href="@{/categorias/listar}">Listar categorias</a></li>
+                </ul></li>
+            <li><a th:href="@{/relatorios}">Relatórios</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--
+  =========================================== Fim barra de Menu ==========================================
+-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="solid">
+                <label>Quantidade de Produtos x Clientes</label>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+                <canvas class="line-chart" width:50% weight:50% id="myChart1"></canvas>
+                <script>
+
+                    /* DADOS DA API */
+                    const url = 'http://localhost:8080/api/relatorios/cliente-quantidade';
+                    const params = {
+                        method: 'GET',
+                        mode: 'cors'
+                    };
+
+                    fetch(url, params).then(res => {
+                        return res.json();
+                    }).then(dados => {
+                        let clientes = [];
+                    dados.forEach(valor => {
+                        clientes.push(valor.cliente);
+                    });
+
+                    let quantidades = [];
+                    dados.forEach(valor => {
+                        quantidades.push(valor.quantidade);
+                    });
+
+                    /* GRÁFICOS */
+                    var ctx = document.getElementById("myChart1").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: clientes,
+                            datasets: [{
+                                label: 'Quantidade Comprada',
+                                data: quantidades,
+                                backgroundColor: "#68cdff"
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="solid">
+                <label>Quantidade de Pedidos x Categoria</label>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+                <canvas class="line-chart" width:50% weight:50% id="myChart2"></canvas>
+                <script>
+
+                    /* DADOS DA API */
+                    const url2 = 'http://localhost:8080/api/relatorios/categoria-quantidade';
+                    const params2 = {
+                        method: 'GET',
+                        mode: 'cors'
+                    };
+                    fetch(url2, params2).then(res => {
+                        return res.json();
+                    }).then(dados => {
+                        let categorias = [];
+                    dados.forEach(valor => {
+                        categorias.push(valor.categoria);
+                    });
+
+                    let quantidades = [];
+                    dados.forEach(valor => {
+                        quantidades.push(valor.quantidade);
+                    });
+
+                    /* GRÁFICOS */
+                    var ctx = document.getElementById("myChart2").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: categorias,
+                            datasets: [{
+                                label: 'Quantidade de Itens por Categorias',
+                                data: quantidades,
+                                backgroundColor: "#68cdff"
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="solid">
+                <label>Quantidade de Pedidos x Produtos</label>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+                <canvas class="line-chart" width:50% weight:50% id="myChart3"></canvas>
+            </div>
+            <script>
+                /* DADOS DA API */
+                const url3 = 'http://localhost:8080/api/relatorios/produto-quantidade';
+                const params3 = {
+                    method: 'GET',
+                    mode: 'cors'
+                };
+                fetch(url3, params3).then(res => {
+                    return res.json();
+                }).then(dados => {
+                    let produtos = [];
+                dados.forEach(valor => {
+                    produtos.push(valor.produto);
+                });
+
+                let quantidades = [];
+                dados.forEach(valor => {
+                    quantidades.push(valor.quantidade);
+                });
+
+                /* GRÁFICOS */
+                var ctx = document.getElementById("myChart3").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: {
+                        labels: produtos,
+                        datasets: [{
+                            label: 'Quantidade de Produtos Comprados',
+                            data: quantidades,
+                            backgroundColor: "#68cdff"
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: false
+                                }
+                            }]
+                        }
+                    }
+                });
+                });
+            </script>
+        </div>
+        <div class="col-xs-6">
+            <div class="solid">
+                <label>Média de Pedidos x Atendentes</label>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+                <canvas class="line-chart" width:50% weight:50% id="myChart4"></canvas>
+                <script>
+
+                    /* DADOS DA API */
+                    const url4 = 'http://localhost:8080/api/relatorios/media-atendente';
+                    const params4 = {
+                        method: 'GET',
+                        mode: 'cors'
+                    };
+                    fetch(url4, params4).then(res => {
+                        return res.json();
+                    }).then(dados => {
+                        let atendentes = [];
+                    dados.forEach(valor => {
+                        atendentes.push(valor.atendente);
+                    });
+
+                    let medias = [];
+                    dados.forEach(valor => {
+                        medias.push(valor.media);
+                    });
+
+                    /* GRÁFICOS */
+                    var ctx = document.getElementById("myChart4").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: atendentes,
+                            datasets: [{
+                                label: 'Média de Pedidos por Atendente',
+                                data: medias,
+                                backgroundColor: "#68cdff"
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: false
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

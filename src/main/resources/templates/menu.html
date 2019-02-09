@@ -33,7 +33,7 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand">CRUD Spring Boot</a>
+				<a class="navbar-brand">Sistema de Pedidos</a>
 			</div>
 			<div class="navbar-header">
 				<a class="navbar-brand" th:href="@{/}">Menu</a>
@@ -71,7 +71,7 @@
 								categoria</a></li>
 						<li><a th:href="@{/categorias/listar}">Listar categorias</a></li>
 					</ul></li>
-				<li><a href="">Sair</a></li>
+				<li><a th:href="@{/relatorios}">Relatórios</a></li>
 			</ul>
 
 		</div>
@@ -108,9 +108,9 @@
 
 	<div class="col-md-4">
 		<a class="btn btn-block btn-lg btn-danger"
-			th:href="@{/pedidos/cadastrar}" data-toggle="modal"> <i
-			class="glyphicon glyphicon-usd" id="icone_grande"></i> <br> <br>
-			Solicitar pedidos</span></a>
+			th:href="@{/relatorios}" data-toggle="modal"> <i
+			class="fa fa-bar-chart" id="icone_grande"></i> <br> <br>
+			Relatórios</span></a>
 	</div>
 </div>
 <p></p>

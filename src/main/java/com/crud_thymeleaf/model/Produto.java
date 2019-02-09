@@ -1,4 +1,4 @@
-package com.crud_thymeleaf.domain;
+package com.crud_thymeleaf.model;
 
 import javax.persistence.*;
 import java.util.Objects;

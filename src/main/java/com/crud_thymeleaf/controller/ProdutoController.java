@@ -1,11 +1,9 @@
-package com.crud_thymeleaf.resources;
+package com.crud_thymeleaf.controller;
 
-import com.crud_thymeleaf.domain.Categoria;
-import com.crud_thymeleaf.domain.Produto;
-import com.crud_thymeleaf.domain.Produto;
-import com.crud_thymeleaf.services.CategoriaServices;
-import com.crud_thymeleaf.services.ProdutoServices;
-import com.crud_thymeleaf.services.ProdutoServices;
+import com.crud_thymeleaf.model.Categoria;
+import com.crud_thymeleaf.model.Produto;
+import com.crud_thymeleaf.service.CategoriaServices;
+import com.crud_thymeleaf.service.ProdutoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,7 +15,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/produtos")
-public class ProdutoResource {
+public class ProdutoController {
 
     @Autowired
     ProdutoServices produtoServices;

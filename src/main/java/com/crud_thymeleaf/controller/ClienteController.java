@@ -1,4 +1,4 @@
-package com.crud_thymeleaf.resources;
+package com.crud_thymeleaf.controller;
 
 import java.util.Optional;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.crud_thymeleaf.domain.Cliente;
-import com.crud_thymeleaf.services.ClienteServices;
+import com.crud_thymeleaf.model.Cliente;
+import com.crud_thymeleaf.service.ClienteServices;
 
 @Controller
 @RequestMapping("/clientes")
-public class ClienteResource {
+public class ClienteController {
 
 	@Autowired
 	ClienteServices clienteServices;

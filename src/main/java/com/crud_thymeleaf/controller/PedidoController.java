@@ -1,10 +1,10 @@
-package com.crud_thymeleaf.resources;
+package com.crud_thymeleaf.controller;
 
-import com.crud_thymeleaf.domain.*;
-import com.crud_thymeleaf.services.AtendenteServices;
-import com.crud_thymeleaf.services.ClienteServices;
-import com.crud_thymeleaf.services.PedidoServices;
-import com.crud_thymeleaf.services.ProdutoServices;
+import com.crud_thymeleaf.model.*;
+import com.crud_thymeleaf.service.AtendenteServices;
+import com.crud_thymeleaf.service.ClienteServices;
+import com.crud_thymeleaf.service.PedidoServices;
+import com.crud_thymeleaf.service.ProdutoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/pedidos")
-public class PedidoResource {
+public class PedidoController {
 
     @Autowired
     PedidoServices pedidoServices;
@@ -86,5 +86,4 @@ public class PedidoResource {
         pedidoServices.removePedido(pedido);
         return "redirect:/pedidos/listar";
     }
-
 }

@@ -1,7 +1,7 @@
-package com.crud_thymeleaf.resources;
+package com.crud_thymeleaf.controller;
 
-import com.crud_thymeleaf.domain.Atendente;
-import com.crud_thymeleaf.services.AtendenteServices;
+import com.crud_thymeleaf.model.Atendente;
+import com.crud_thymeleaf.service.AtendenteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/atendentes")
-public class AtendenteResource {
+public class AtendenteController {
 
     @Autowired
     AtendenteServices atendenteServices;

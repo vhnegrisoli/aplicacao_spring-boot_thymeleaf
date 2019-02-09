@@ -1,4 +1,4 @@
-package com.crud_thymeleaf.services;
+package com.crud_thymeleaf.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.crud_thymeleaf.domain.Cliente;
-import com.crud_thymeleaf.repositories.ClienteRepository;
+import com.crud_thymeleaf.model.Cliente;
+import com.crud_thymeleaf.repository.ClienteRepository;
 
 @Service
 public class ClienteServices {
@@ -26,8 +26,7 @@ public class ClienteServices {
 	public Cliente insereCliente(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
-	
-	
+
 	public Cliente atualizaCliente(Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
