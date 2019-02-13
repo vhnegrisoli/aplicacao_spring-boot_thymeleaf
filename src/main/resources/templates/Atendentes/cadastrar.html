@@ -65,7 +65,7 @@
     <form th:action="${atendente.id == null} ? @{/atendentes/salvar} : @{/atendentes/editar}" th:object = "${atendente}" method = "POST">
       <div class="form-group">
         <label for="name">Nome da atendente:</label>
-        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do/a atendente..." name="nome">
+        <input type="text" class="form-control" id="email" th:field = "*{nome}" placeholder="Digite o nome do/a atendente..." name="nome" required>
       </div>
       <input type="hidden" id="id" th:field="*{id}"/>
       <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>

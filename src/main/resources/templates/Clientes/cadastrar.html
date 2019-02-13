@@ -65,15 +65,15 @@
     <form th:action="${cliente.id == null} ? @{/clientes/salvar} : @{/clientes/editar}" th:object = "${cliente}" method = "POST">
       <div class="form-group">
         <label for="name">Nome do cliente:</label>
-        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do cliente..." name="nome">
+        <input type="text" class="form-control" id="email"  th:field = "*{nome}" placeholder="Digite o nome do cliente..." name="nome" required>
       </div>
       <div class="form-group">
           <label for="name">E-mail do cliente:</label>
-          <input type="email" class="form-control" id="email" th:field = "*{email}" placeholder="Digite o nome do cliente..." name="nome">
+          <input type="email" class="form-control" id="email" th:field = "*{email}" placeholder="Digite o nome do cliente..." name="nome" required>
         </div>
         <div class="form-group">
             <label for="name">Endereço do cliente:</label>
-            <input type="text" class="form-control" th:field = "*{endereco}" id="email" placeholder="Digite o nome do cliente..." name="nome">
+            <input type="text" class="form-control" th:field = "*{endereco}" id="email" placeholder="Digite o nome do cliente..." name="nome" required>
           </div>
       <input type="hidden" id="id" th:field="*{id}"/>
       <button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-plus"></span> Cadastrar</button>

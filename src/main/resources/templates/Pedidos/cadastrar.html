@@ -67,7 +67,7 @@
         <div class="form-group">
             <label for="produto">Produto do pedido:</label>
 			<p></p>
-            <select class="form-control"  id="produto" produto th:field = "*{produto}" text="Selecione uma opção">
+            <select class="form-control"  id="produto" produto th:field = "*{produto}" text="Selecione uma opção" required>
                 <option value="">Selecione uma opção</option>
                 <option th:each="p : ${produtos}"
                         th:value="${p.id}" th:text="${p.descricao}" selected="selected">
@@ -79,7 +79,7 @@
         <div class="form-group">
             <label for="cliente">Cliente do pedido:</label>
 			<p></p>
-            <select class="form-control"  id="cliente" cliente th:field = "*{cliente}" text="Selecione uma opção">
+            <select class="form-control"  id="cliente" cliente th:field = "*{cliente}" text="Selecione uma opção" required>
                 <option value="">Selecione uma opção</option>
                 <option th:each="c : ${clientes}"
                         th:value="${c.id}" th:text="${c.nome}" selected="selected">
@@ -91,7 +91,7 @@
         <div class="form-group">
             <label for="atendente">Atendente do pedido:</label>
 			<p></p>
-            <select class="form-control"  id="atendente" atendente th:field = "*{atendente}" text="Selecione uma opção">
+            <select class="form-control"  id="atendente" atendente th:field = "*{atendente}" text="Selecione uma opção" required>
                 <option value="">Selecione uma opção</option>
                 <option th:each="a : ${atendentes}"
                         th:value="${a.id}" th:text="${a.nome}" selected="selected">
@@ -102,12 +102,12 @@
 
         <div class="form-group">
             <label>Data do Pedido:</label>
-            <input type="text" class="form-control" id="email"  th:field = "*{data_pedido}" placeholder="Data do pedido..." name="descricao">
+            <input type="text" class="form-control" id="email"  th:field = "*{data_pedido}" placeholder="Data do pedido..." name="descricao" required>
         </div>
 
         <div class="form-group">
             <label>Quantidade de Produtos:</label>
-            <input type="text" class="form-control" id="email"  th:field = "*{quantidade}" placeholder="Digite a quantidade de produtos..." name="descricao">
+            <input type="text" class="form-control" id="email"  th:field = "*{quantidade}" placeholder="Digite a quantidade de produtos..." name="descricao" required>
         </div>
 
         <input type="hidden" id="id" th:field="*{id}"/>
